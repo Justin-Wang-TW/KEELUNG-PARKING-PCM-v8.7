@@ -1599,8 +1599,8 @@ const AssetManagement: React.FC<AssetManagementProps> = ({ currentUser, assets, 
               </div>
 
               {/* Right Panel: List */}
-              <div className="w-full md:w-7/12 p-6 bg-gray-50 flex flex-col h-full">
-                <div className="flex justify-between items-center mb-4">
+              <div className="w-full md:w-7/12 p-6 bg-gray-50 flex flex-col h-full overflow-hidden">
+                <div className="flex justify-between items-center mb-4 flex-shrink-0">
                   <h4 className="text-lg font-medium text-gray-800 flex items-center">
                     <span className="bg-gray-200 text-gray-800 text-xs font-bold px-2 py-1 rounded mr-2">2</span>
                     待提交清單 ({batchAddItems.length})
@@ -1608,15 +1608,15 @@ const AssetManagement: React.FC<AssetManagementProps> = ({ currentUser, assets, 
                   <span className="text-xs text-gray-500">確認無誤後請點擊下方送出</span>
                 </div>
 
-                <div className="flex-1 overflow-y-auto space-y-3 pr-2">
+                <div className="flex-1 overflow-y-auto space-y-3 pr-2 min-h-0">
                   {batchAddItems.length > 0 ? (
-                    batchAddItems.map((item, index) => (
+                    batchAddItems.map((item) => (
                       <div key={item.tempId} className="bg-white p-4 rounded-lg border border-gray-200 shadow-sm flex justify-between items-start group hover:border-blue-300 transition-colors">
                         <div className="flex-1 grid grid-cols-2 gap-x-4 gap-y-1">
                           <div className="col-span-2 font-medium text-gray-900 flex items-center">
                             {item.name}
                             <span className="ml-2 text-xs font-normal text-gray-500 bg-gray-100 px-2 py-0.5 rounded-full">
-                              {STATIONS.find(s => s.code === item.stationCode)?.name}
+                              {availableStations.find(s => s.code === item.stationCode)?.name}
                             </span>
                           </div>
                           
@@ -1662,7 +1662,7 @@ const AssetManagement: React.FC<AssetManagementProps> = ({ currentUser, assets, 
                   )}
                 </div>
 
-                <div className="mt-4 pt-4 border-t border-gray-200">
+                <div className="mt-4 pt-4 border-t border-gray-200 flex-shrink-0 bg-gray-50 z-10">
                   <div className="flex justify-between items-center mb-4 text-sm text-gray-600">
                     <span>總筆數: {batchAddItems.length}</span>
                   </div>
